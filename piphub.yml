@@ -1,0 +1,54 @@
+# PipHub Configuration - Contains all setup() function arguments for setup.py
+# This file is used to automatically generate setup.py and manage releases
+
+# Required setup() arguments
+name: "duckno"
+version: "0.1.0"
+author: "ltanedo"
+author_email: "ltanedo@users.noreply.github.com"
+description: "Treat DuckDB as a tiny NoSQL-style key/value store"
+url: "https://github.com/ltanedo/duckno"
+
+# Optional setup() arguments
+license: "MIT"
+long_description_content_type: "text/markdown"
+python_requires: ">=3.8"
+
+# Package discovery (single-file module)
+py_modules: ["duckno"]
+
+# Dependencies (use YAML list format)
+install_requires: ["duckdb"]
+
+# Keywords for PyPI (comma-separated string or YAML list)
+keywords: "duckdb, nosql, key-value, kv-store, database, storage"
+
+# Classifiers for PyPI (modify as appropriate for your package)
+classifiers: [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities"
+]
+
+# Project URLs (update with your repository URLs)
+project_urls: {
+    "Bug Reports": "https://github.com/ltanedo/duckno/issues",
+    "Source": "https://github.com/ltanedo/duckno",
+    "Documentation": "https://github.com/ltanedo/duckno#readme"
+}
+
+# Release-specific settings (not part of setup() function)
+tag_prefix: "v"
+target_branch: "master"
+release_notes_file: "README.md"
+draft: false
+prerelease: false
