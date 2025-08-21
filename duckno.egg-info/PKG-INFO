@@ -1,0 +1,80 @@
+Metadata-Version: 2.4
+Name: duckno
+Version: 0.1.0
+Summary: Treat DuckDB as a tiny NoSQL-style key/value store
+Home-page: https://github.com/ltanedo/duckno
+Author: ltanedo
+Author-email: ltanedo@users.noreply.github.com
+License: MIT
+Project-URL: Bug Reports, https://github.com/ltanedo/duckno/issues
+Project-URL: Source, https://github.com/ltanedo/duckno
+Project-URL: Documentation, https://github.com/ltanedo/duckno#readme
+Keywords: duckdb,nosql,key-value,kv-store,database,storage
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: duckdb
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# DuckNo
+
+Treat DuckDB as a tiny NoSQL-style key/value store.
+
+## Install
+- pip install duckdb
+
+## Quick start
+```python
+from duckno import DuckNo
+
+# Default: file-backed DB at ./duckno.db
+kv = DuckNo()
+kv.set("user:1", {"name": "Ada"})
+print(kv.get("user:1"))   # {'name': 'Ada'}
+print(kv.keys())           # ['user:1']
+kv.close()
+
+# In-memory (ephemeral)
+with DuckNo(memory=True) as mem:
+    mem.set("tmp", 123)
+    assert mem.get("tmp") == 123
+
+# Custom file path
+kv2 = DuckNo("data/mydata.duckdb")
+```
+
+## Storage options
+- Default: file-backed DB at ./duckno.db (current working directory)
+- In-memory: DuckNo(memory=True) or DuckNo(":memory:", memory=True)
+- Custom path: DuckNo("/path/to/db.duckdb" or "./my.db")
+
+## API
+- set(key, value) -> None
+- get(key, default=None) -> Any
+- keys() -> list[str]
+- Context manager supported (with DuckNo(...): ...)
+- database_path property returns the file path or None for in-memory
+
+Notes: Values must be JSON-serializable (stored as JSON text).

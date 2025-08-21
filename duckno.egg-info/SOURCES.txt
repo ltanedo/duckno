@@ -1,0 +1,8 @@
+README.md
+duckno.py
+setup.py
+duckno.egg-info/PKG-INFO
+duckno.egg-info/SOURCES.txt
+duckno.egg-info/dependency_links.txt
+duckno.egg-info/requires.txt
+duckno.egg-info/top_level.txt
